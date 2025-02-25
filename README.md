@@ -49,8 +49,7 @@ aws configure
 
 
 
-#### ⚠️ Disclaimer
-- This project is based on a Pluralsight course: "Deploying and Managing a Web Application in Kubernetes with Terraform." I have modified and extended the implementation for my own use case.If you find this project useful, consider checking out the original course on Pluralsight!
+#### ⚠️ Disclaimer: This project is based on a Pluralsight course: "Deploying and Managing a Web Application in Kubernetes with Terraform." I have modified and extended the implementation for my own use case.If you find this project useful, consider checking out the original course on Pluralsight!
 
 
 
