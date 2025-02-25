@@ -22,3 +22,45 @@ aws configure
 - When prompted for the ```AWS Access Key ID```, enter the Access key you copied from the AWS console.
 - When prompted for the ```AWS Secret Access Key```, enter the Access key you copied from the AWS console.
 - When prompted, press Enter to accept the ```Default region name``` and ```Default output format```.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+⚠️ Disclaimer
+This project is based on a Pluralsight course:
+"Deploying and Managing a Web Application in Kubernetes with Terraform."
+I have modified and extended the implementation for my own use case.
+If you find this project useful, consider checking out the original course on Pluralsight!
+
+
+
+
+📜 License
+This project is provided for educational purposes. Please ensure you comply with Pluralsight's terms of use before distributing this work.
+
+
+💡 Contributions
+Feel free to modify and improve this project! If you add new features or optimizations, consider opening a pull request.
