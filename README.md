@@ -55,19 +55,43 @@ terraform plan
 ```bash
 terraform apply
 ```
+- Once deployed, configure the Kubernetes CLI to use the cluster's context
+``` bash
+# Used to configure kubectl (Kubernetes CLI) to connect to an Amazon EKS (Elastic Kubernetes Service) cluster.
+aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
+```
+- Cnnfirm that the cluster is up and running
+``` bash
+kubectl cluster-info
+```
+#### Note : You should see that the ```Kubernetes control plane``` and ```CoreDNS``` are running as expected.
 
-
-
-
-
-
-
-
-
-
-
-
-
+#### Complete the Terraform Configuration
+- Chnage into the main directory
+``` bash
+cd ../
+```
+- Download the Pac-Man Terraform configuration provided or you can find this in repository files section :
+``` bash
+wget https://github.com/pluralsight-cloud/content-deploying-and-managing-a-web-application-in-kubernetes-with-terraform/raw/main/pac-man.zip
+```
+- Unzip th file:
+```bash
+unzip pac-man.zip
+```
+- List the files:
+```bash
+ls
+```
+- Change into th ```pac-man``` directory
+```bash
+cd pac-man/
+```
+- List the fils in the directory
+```bash
+ls
+```
+#### Note : You should see the ```modules``` directory and the ```pac-man.tf``` configuration file.
 
 #### ⚠️ Disclaimer: This project is based on a Pluralsight course: "Deploying and Managing a Web Application in Kubernetes with Terraform." I have modified and extended the implementation for my own use case.If you find this project useful, consider checking out the original course on Pluralsight!
 
