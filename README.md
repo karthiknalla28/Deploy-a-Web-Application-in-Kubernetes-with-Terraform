@@ -23,18 +23,38 @@ aws configure
 - When prompted for the ```AWS Secret Access Key```, enter the Access key you copied from the AWS console.
 - When prompted, press Enter to accept the ```Default region name``` and ```Default output format```.
 
-
-
-
-
-
-
-
-
-
-
-
-
+#### Deploy the EKS Cluster with Terraform
+- Download the EKS Terraform configuration provided or you can download the folder in my repository
+```//github.com/pluralsight-cloud/content-deploying-and-managing-a-web-application-in-kubernetes-with-terraform/raw/main/eks.zip```
+- Unzip the file
+```bash
+unzip eks.zip
+```
+- change into the ```EKS``` directory
+```bash
+cd eks
+```
+- List the files in the directory
+```bash
+ls
+```
+#### Note : You should see the ```eks-cluster.tf, main.tf, outputs.tf, terraform.tf, variables.tf, and vpc.tf``` configuration files
+- Intialize the working directory
+```bash
+terraform init
+```
+- Validate the configuration
+```bash
+terraform validate
+```
+- Create an execution plan in terraform
+```bash
+terraform plan
+```
+- Apply the configuration and deploy the EKS cluster
+```bash
+terraform apply
+```
 
 
 
