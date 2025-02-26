@@ -92,7 +92,52 @@ cd pac-man/
 ls
 ```
 #### Note : You should see the ```modules``` directory and the ```pac-man.tf``` configuration file.
+-  Edit the Pac-Man configuration deployment:
+```bash
+vim modules/pac-man/pac-man-deployment.tf
+```
+-  For the ```container``` spec, update the ```image``` argument with the Docker image provided :
+```bash
+image = "docker.io/jessehoch/pacman-nodejs-app:latest"
+```
+-  List the files in the modules directory :
+```bash
+ls modules/
+```
+#### Note : You should see the ```mongo``` and ```pac-man``` directories.
+-  Edit the main Terraform configuration file:
+```bash
+vim pac-man.tf
+```
+-   Update the file to include these two modules and pass the ```pac-man``` namespace to them:
+```bash
+# Define a Terraform module named "mongo" to deploy a MongoDB instance
+module "mongo" {
+  source = "./modules/mongo"       # Path to the MongoDB module
+  kubernetes_namespace = "pac-man" # Deploy MongoDB in the "pac-man" Kubernetes namespace
+}
 
+# Define a Terraform module named "pac-man" to deploy the Pac-Man application
+module "pac-man" {
+  source = "./modules/pac-man"      # Path to the Pac-Man application module
+  kubernetes_namespace = "pac-man"  # Deploy Pac-Man in the same "pac-man" Kubernetes namespace
+
+  # Ensure MongoDB is deployed first before deploying the Pac-Man application
+  depends_on = [module.mongo]  
+}
+```
+- Check the configuration for any formatting issues
+```bash
+ terraform fmt
+```
+-  Intialize the working directory
+```bash
+ terraform init
+```
+-  Validate the configuration
+```bash
+terraform validate
+```
 #### ⚠️ Disclaimer: This project is based on a Pluralsight course: "Deploying and Managing a Web Application in Kubernetes with Terraform." I have modified and extended the implementation for my own use case.If you find this project useful, consider checking out the original course on Pluralsight!
 
 
