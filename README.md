@@ -138,6 +138,59 @@ module "pac-man" {
 ```bash
 terraform validate
 ```
+#### Deploy the Pac-Man Web Application with Terraform :
+-  Apply the configuration and deploy the web application:
+```bash
+terraform apply
+```
+-  When prompted, enter yes to confirm.
+-  Once deployed, confirm that the web application resources were deployed in the ```pac-man``` namespace and are available:
+```bash
+kubectl -n pac-man get all
+```
+#### Note : You should see that the ```mongo``` and ```pac-man pods```, services, deployments, and replicas are all available and running as expected.
+-  For the ```pac-man``` service, copy the external IP address provided in the ```EXTERNAL-IP``` column.
+-  In a new browser tab or window, paste the external IP address and hit Enter.
+-  When the Pac-Man web application launches, click to play as instructed, and play the game to confirm that it is working as expected.
+
+#### Scale the Kubernetes Web Application :
+- Back in the terminal, edit the MongoDB deployment configuration file:
+```bash
+vim modules/mongo/mongo-deployment.tf
+```
+-  For the replicas spec, update the ```replicas``` value to 2.
+-  Edit the Pac-Man deployment configuration file:
+```bash
+vim modules/pac-man/pac-man-deployment.tf
+```
+-  For the replicas spec, update the replicas value to 3.
+-  Apply the updates to the configuration:
+```bash
+terraform apply
+```
+-  When prompted, enter yes to confirm.
+-  Confirm that the resources were updated:
+  ```bash
+kubectl -n pac-man get all
+```
+-  You should see that the mongo and pac-man pods, deployments, and replicas have all been scaled up to 2 and 3, respectively.
+-  In the browser, refresh the Pac-Man web application and confirm that it is still working as expected.
+-  Back in the terminal, edit the MongoDB and Pac-Man deployment configuration files again, this time changing the replicas back to 1.
+-  Apply the updates to the configuration:
+```bash
+terraform apply
+```
+-  When prompted, enter yes to confirm.
+-  Confirm that the resources were updated:
+```bash
+kubectl -n pac-man get all
+```
+-  You should see that the mongo and pac-man pods, deployments, and replicas have all been scaled back down to 1 each.
+
+-  In the browser, refresh the Pac-Man web application again and confirm that it is still working as expected.
+
+
+
 #### ⚠️ Disclaimer: This project is based on a Pluralsight course: "Deploying and Managing a Web Application in Kubernetes with Terraform." I have modified and extended the implementation for my own use case.If you find this project useful, consider checking out the original course on Pluralsight!
 
 
